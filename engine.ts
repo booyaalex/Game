@@ -1,25 +1,8 @@
-const canvasWidth: number = 400;
-const canvasHeight: number = 400;
+import * as THREE from 'three';
 
-class DrawingApp {
-    private canvas: HTMLCanvasElement;
-    public gl: WebGL2RenderingContext;
+const scene: THREE.Scene = new THREE.Scene();
+const camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-    constructor() {
-        let canvas = document.getElementById('canvas') as HTMLCanvasElement;
-        canvas.width = canvasWidth;
-        canvas.height = canvasHeight;
-        this.canvas = canvas;
-
-        let gl = canvas.getContext("webgl") as WebGL2RenderingContext;
-        this.gl = gl;
-    }
-}
-
-window.onload = () => {
-    const draw = new DrawingApp(); 
-    // Set clear color to black, fully opaque
-    draw.gl.clearColor(0.0, 0.0, 0.0, 1.0);
-    // Clear the color buffer with specified clear color
-    draw.gl.clear(draw.gl.COLOR_BUFFER_BIT);
-};
+const renderer:THREE.WebGLRenderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
