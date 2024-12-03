@@ -3,7 +3,7 @@ const canvasHeight: number = 400;
 
 class DrawingApp {
     private canvas: HTMLCanvasElement;
-    public gl: WebGL2RenderingContext;
+    public gl: CanvasRenderingContext2D;
 
     constructor() {
         let canvas = document.getElementById('canvas') as HTMLCanvasElement;
@@ -11,11 +11,13 @@ class DrawingApp {
         canvas.height = canvasHeight;
         this.canvas = canvas;
 
-        let gl = canvas.getContext("webgl2") as WebGL2RenderingContext;
+        let gl = canvas.getContext("2d") as CanvasRenderingContext2D;
         this.gl = gl;
     }
 }
 
 window.onload = () => {
-    new DrawingApp(); 
+    const draw = new DrawingApp(); 
+    draw.gl.fillStyle = "red";
+    draw.gl.fillRect(0, 0, 10, 10);
 };

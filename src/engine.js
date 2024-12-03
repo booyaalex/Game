@@ -7,10 +7,12 @@ class DrawingApp {
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
         this.canvas = canvas;
-        let gl = canvas.getContext("webgl2");
+        let gl = canvas.getContext("2d");
         this.gl = gl;
     }
 }
 window.onload = () => {
-    new DrawingApp();
+    const draw = new DrawingApp();
+    draw.gl.fillStyle = "red";
+    draw.gl.fillRect(0, 0, 10, 10);
 };
