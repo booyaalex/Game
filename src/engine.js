@@ -7,12 +7,14 @@ class DrawingApp {
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
         this.canvas = canvas;
-        let gl = canvas.getContext("2d");
+        let gl = canvas.getContext("webgl");
         this.gl = gl;
     }
 }
 window.onload = () => {
     const draw = new DrawingApp();
-    draw.gl.fillStyle = "red";
-    draw.gl.fillRect(0, 0, 10, 10);
+    // Set clear color to black, fully opaque
+    draw.gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    // Clear the color buffer with specified clear color
+    draw.gl.clear(draw.gl.COLOR_BUFFER_BIT);
 };
